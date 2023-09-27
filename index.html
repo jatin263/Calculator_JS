@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calculator By Jatin</title>
+        <meta name="description" content="Online Calculator">
+        <meta name="title" content="Online Calculator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="Calculator-border">
+            <div class="horizontal-center">
+                <input type="text" name="expression" id="expression" readonly>
+            </div>
+            <div class="btnDivD">
+                <div class="btnDiv">
+                    <button id="clear" onclick="clearAll()" >C</button>
+                    <button id="backspace" onclick="backspace()">⌫</button>
+                    <button id="backspace" onclick="switchMode()">&#9728;&#65039;</button>
+                    <button id="calONOF" onclick="offCal()">OFF</button>
+                </div>
+                <div class="btnDiv">
+                    <button id="divide" onclick="insert('/')">÷</button>
+                    <button id="seven" onclick="insert(7)">7</button>
+                    <button id="eight" onclick="insert(8)">8</button>
+                    <button id="nine" onclick="insert(9)">9</button>
+                </div>
+                <div class="btnDiv">
+                    <button id="multiply" onclick="insert('*')">*</button>
+                    <button id="four" onclick="insert(4)">4</button>
+                    <button id="five" onclick="insert(5)">5</button>
+                    <button id="six" onclick="insert(6)">6</button>
+                </div>
+                <div class="btnDiv">
+                    <button id="subtract" onclick="insert('-')">-</button>
+                    <button id="one" onclick="insert(1)">1</button>
+                    <button id="two" onclick="insert(2)">2</button>
+                    <button id="three" onclick="insert(3)">3</button>
+                </div>
+                <div class="btnDiv">
+                    <button id="add" onclick="insert('+')">+</button>
+                    <button id="zero" onclick="insert(0)">0</button>
+                    <button id="decimal" onclick="insert('.')">.</button>
+                    <button id="equals" onclick="equals()">=</button>
+                </div>
+
+            </div>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
+</html>
