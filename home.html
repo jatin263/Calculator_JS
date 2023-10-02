@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <h1>File Upload</h1>
+    <table style="width:100%">
+        <tr>
+            <th>Name of Document</th>
+            <th>File Name</th>
+            <th>Upload File /Remove</th>
+            <th>File Preview</th>
+        </tr>
+        <tbody id="tbody">
+            <tr>
+                <td>
+                    <select name="doc[]" id="doc">
+                        <option>Select</option>
+                        <option>Document 1</option>
+                        <option>Document 2</option>
+                        <option>Document 3</option>
+                        <option>Document 4</option>
+                    </select>
+                </td>
+                <td>
+                    <p id="fileName">No Selected</p>
+                </td>
+                <td style="padding: 15px;">
+                    <label for="fileUser" style="border:2px solid black;padding: 5px;">Upload</label><input type="file" name="file" id="fileUser" style="display: none;" onchange="setFileName(this.value,null)"><br>
+                    <button class="remove" style="background-color: transparent; border:2px solid black;padding: 5px;font-size: 1rem;margin-top: 8px;">Remove</button>
+                </td>
+                <td>
+                    <p id="fileName">No Selected</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="addMore">Add More</button>
+    <button id="saveData">Save</button>
+    <script>
+        let i = 0;
+        $("#addMore").click(function(){
+            $("#tbody").append(`<tr>
+                <td>
+                    <select name="doc[]" id="doc">
+                        <option>Select</option>
+                        <option>Document 1</option>
+                        <option>Document 2</option>
+                        <option>Document 3</option>
+                        <option>Document 4</option>
+                    </select>
+                </td>
+                <td>
+                    <p id="fileName${i}">No Selected</p>
+                </td>
+                <td style="padding: 15px;">
+                    <label for="fileUser" style="border:2px solid black;padding: 5px;">Upload</label><input type="file" name="file" id="fileUser" style="display: none;" onchange="setFileName(this.value,${i})"><br>
+                    <button class="remove" style="background-color: transparent; border:2px solid black;padding: 5px;font-size: 1rem;margin-top: 8px;">Remove</button>
+                </td>
+                <td>
+                    <p id="fileName">No Selected</p>
+                </td>
+            </tr>`);
+            i++;
+        });
+        $("#saveData").click(function(){
+            var data = [];
+            $("#tbody tr").each(function(){
+                console.log($(this).find("td:last-child :file"));
+                data.push({
+                    name : $(this).find("#doc").val(),
+                    file : $(this).find("td:last-child :file").file
+                })
+            });
+            console.log(data);
+        });
+
+        function setFileName (f,g) {
+            if(g==null){
+                $("#fileName").html(f);
+            }
+            else{
+                $(`#fileName${g}`).html(f);
+            }
+          }
+        
+            $("#tbody").on("click", "button.remove", function () {
+                $(this).parent().parent().remove();
+                i--;
+            });
+
+        //   $("tbody#tbody tr td button.remove").click(function(){
+        //     console.log(i);
+            // $(this).parent().parent().remove();
+            // i--;
+        // });
+    </script>
+</body>
+</html>
